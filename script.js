@@ -26,83 +26,84 @@
 
 
 // Import Mongoose
-const mongoose = require('mongoose');
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/website', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => {
-    console.log('Connected to MongoDB');
-}).catch((error) => {
-    console.error('Error connecting to MongoDB:', error);
-});
+// const mongoose = require('mongoose');
 
-// Define a schema
-const userSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    message: String
-});
+// // Connect to MongoDB
+// mongoose.connect('mongodb://localhost:27017/website', {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// }).then(() => {
+//     console.log('Connected to MongoDB');
+// }).catch((error) => {
+//     console.error('Error connecting to MongoDB:', error);
+// });
 
-// Create a model
-const User = mongoose.model('User', userSchema);
+// // Define a schema
+// const userSchema = new mongoose.Schema({
+//     name: String,
+//     email: String,
+//     message: String
+// });
 
-// CRUD operations
+// // Create a model
+// const User = mongoose.model('User', userSchema);
 
-// Create a new user
-const createUser = async () => {
-    const newUser = new User({
-        name: 'John Doe',
-        email: 'john.doe@example.com',
-        message: 'hello i am Ritik'
-    });
+// // CRUD operations
 
-    try {
-        const savedUser = await newUser.save();
-        console.log('User saved:', savedUser);
-    } catch (error) {
-        console.error('Error saving user:', error);
-    }
-};
+// // Create a new user
+// const createUser = async () => {
+//     const newUser = new User({
+//         name: 'John Doe',
+//         email: 'john.doe@example.com',
+//         message: 'hello i am Ritik'
+//     });
 
-// Read users
-const getUsers = async () => {
-    try {
-        const users = await User.find();
-        console.log('Users:', users);
-    } catch (error) {
-        console.error('Error getting users:', error);
-    }
-};
+//     try {
+//         const savedUser = await newUser.save();
+//         console.log('User saved:', savedUser);
+//     } catch (error) {
+//         console.error('Error saving user:', error);
+//     }
+// };
 
-// Update a user
-const updateUser = async (userId) => {
-    try {
-        const updatedUser = await User.findByIdAndUpdate(
-            userId,
-            { message: 'hello' },
-            { new: true } // Return the updated document
-        );
-        console.log('User updated:', updatedUser);
-    } catch (error) {
-        console.error('Error updating user:', error);
-    }
-};
+// // Read users
+// const getUsers = async () => {
+//     try {
+//         const users = await User.find();
+//         console.log('Users:', users);
+//     } catch (error) {
+//         console.error('Error getting users:', error);
+//     }
+// };
 
-// Delete a user
-const deleteUser = async (userId) => {
-    try {
-        const deletedUser = await User.findByIdAndDelete(userId);
-        console.log('User deleted:', deletedUser);
-    } catch (error) {
-        console.error('Error deleting user:', error);
-    }
-};
+// // Update a user
+// const updateUser = async (userId) => {
+//     try {
+//         const updatedUser = await User.findByIdAndUpdate(
+//             userId,
+//             { message: 'hello' },
+//             { new: true } // Return the updated document
+//         );
+//         console.log('User updated:', updatedUser);
+//     } catch (error) {
+//         console.error('Error updating user:', error);
+//     }
+// };
+
+// // Delete a user
+// const deleteUser = async (userId) => {
+//     try {
+//         const deletedUser = await User.findByIdAndDelete(userId);
+//         console.log('User deleted:', deletedUser);
+//     } catch (error) {
+//         console.error('Error deleting user:', error);
+//     }
+// };
 
 // Run the functions
-createUser();
-getUsers();
+// createUser();
+// getUsers();
 // Replace 'userId' with a valid user ID for updating and deleting
 // updateUser('userId');
 // deleteUser('userId');
